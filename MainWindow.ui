@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>737</width>
+    <height>228</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Tg bot settings</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #1E1E1E; /* Основной фон */
+    color: #FFFFFF; /* Текст */
+}
+
+QPushButton {
+    background-color: #3A3A3A; /* Кнопка */
+	border: 2px solid rgba(255, 255, 255, 70); /* Граница кнопки */
+    padding: 2px;
+}
+
+QPushButton:hover {
+    background-color: #3A3A3A; /* Кнопка */
+	border: 2px solid rgba(255, 255, 255, 150); /* Граница кнопки */
+    padding: 2px;
+}
+
+QPushButton:pressed {
+    background-color: #1E1E1E; /* Фон кнопки при наведении */
+	border: 2px solid rgb(255, 255, 255); /* Граница кнопки */
+    padding: 2px;
+}
+
+QLineEdit {
+	border: 2px solid rgba(255, 255, 255, 70);
+	color: white;
+}
+
+QLineEdit:hover {
+	border: 2px solid rgba(255, 255, 255, 150);
+}
+
+QLineEdit:focus {
+	border: 2px solid rgb(255, 255, 255);
+}
+
+QPlainTextEdit {
+	border: 2px solid rgba(255, 255, 255, 70);
+	color: white;
+}
+
+QPlainTextEdit:hover {
+	border: 2px solid rgba(255, 255, 255, 150);
+}
+
+QPlainTextEdit:focus {
+	border: 2px solid rgb(255, 255, 255);
+}
+
+QTableView {
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, 70);
+	gridline-color: rgba(255, 255, 255, 70);
+	selection-color: white;
+	selection-background-color: #3A3A3A;
+}
+
+QTableWiew:section {
+	border: none;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+QTableWiew:item {
+	border-style: none;
+}
+
+QTimeEdit {
+	border: 2px solid rgba(255, 255, 255, 70);
+	color: white;
+}
+
+QTimeEdit:hover {
+	border: 2px solid rgba(255, 255, 255, 150);
+}
+
+QTimeEdit:focus {
+	border: 2px solid rgb(255, 255, 255);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Список публикаций:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_3">
+              <property name="text">
+               <string>Добавить публикацию</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableView" name="tableView">
+            <property name="editTriggers">
+             <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+            </property>
+            <property name="dragDropOverwriteMode">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+            </property>
+            <attribute name="horizontalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>Ввести токен</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Пикча бота</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Название бота</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="text">
+             <string>Выйти</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
