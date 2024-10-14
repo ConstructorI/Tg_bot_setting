@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'Pub_add.ui'
+## Form generated from reading UI file 'Pub_edit.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.2
 ##
@@ -15,13 +15,13 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QDialog,
-    QGridLayout, QHBoxLayout, QLabel, QLineEdit,
-    QPlainTextEdit, QPushButton, QSizePolicy, QSpacerItem,
-    QTimeEdit, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QDialog, QGridLayout,
+    QHBoxLayout, QLabel, QLineEdit, QPlainTextEdit,
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 import res_rc
 
-class Ui_Pub_add(object):
+class Ui_Pub_edit(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
@@ -119,14 +119,18 @@ class Ui_Pub_add(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
+        self.pushButton_4 = QPushButton(Dialog)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+
+        self.verticalLayout.addWidget(self.pushButton_4)
+
         self.pushButton_3 = QPushButton(Dialog)
         self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setMaximumSize(QSize(120, 16777215))
 
         self.verticalLayout.addWidget(self.pushButton_3)
 
 
-        self.gridLayout.addLayout(self.verticalLayout, 2, 5, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout, 2, 2, 1, 1)
 
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setSpacing(10)
@@ -162,7 +166,7 @@ class Ui_Pub_add(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
         self.verticalLayout_3 = QVBoxLayout()
-        self.verticalLayout_3.setSpacing(4)
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.label_4 = QLabel(Dialog)
         self.label_4.setObjectName(u"label_4")
@@ -195,41 +199,29 @@ class Ui_Pub_add(object):
         self.gridLayout.addLayout(self.verticalLayout_2, 0, 0, 3, 1)
 
         self.verticalLayout_6 = QVBoxLayout()
-        self.verticalLayout_6.setSpacing(10)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.pushButton = QPushButton(Dialog)
         self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMaximumSize(QSize(16777215, 22))
 
         self.verticalLayout_6.addWidget(self.pushButton)
 
         self.pushButton_2 = QPushButton(Dialog)
         self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMaximumSize(QSize(16777215, 22))
-        self.pushButton_2.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
 
         self.verticalLayout_6.addWidget(self.pushButton_2)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(-1, 2, -1, -1)
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
 
         self.verticalLayout_5 = QVBoxLayout()
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.timeEdit = QTimeEdit(Dialog)
-        self.timeEdit.setObjectName(u"timeEdit")
-        self.timeEdit.setMinimumSize(QSize(40, 0))
-        self.timeEdit.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
-
-        self.verticalLayout_5.addWidget(self.timeEdit)
-
 
         self.horizontalLayout_3.addLayout(self.verticalLayout_5)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer)
 
@@ -237,11 +229,11 @@ class Ui_Pub_add(object):
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
 
 
-        self.gridLayout.addLayout(self.verticalLayout_6, 0, 5, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_6, 0, 2, 1, 1)
 
         self.horizontalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout.addItem(self.horizontalSpacer_3, 1, 3, 1, 1)
+        self.gridLayout.addItem(self.horizontalSpacer_3, 1, 1, 1, 1)
 
 
         self.retranslateUi(Dialog)
@@ -250,11 +242,12 @@ class Ui_Pub_add(object):
     # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"\u041f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u044f", None))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435", None))
+        self.pushButton_4.setText(QCoreApplication.translate("Dialog", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0438\u0437 \u0433\u0440\u0430\u0444\u0438\u043a\u0430", None))
         self.pushButton_3.setText(QCoreApplication.translate("Dialog", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043a\u0430\u043d\u0430\u043b\u0430:", None))
         self.label_2.setText(QCoreApplication.translate("Dialog", u"ID:", None))
-        self.label_4.setText(QCoreApplication.translate("Dialog", u"\u041f\u0440\u043e\u043c\u043f\u0442 \u0434\u043b\u044f \u0442\u0435\u043a\u0441\u0442\u0430:", None))
+        self.label_4.setText(QCoreApplication.translate("Dialog", u"\u041f\u0440\u043e\u043c\u043f\u0442 \u0434\u043b\u044f \u0442\u0435\u043a\u0441\u0442\u0430", None))
         self.checkBox.setText(QCoreApplication.translate("Dialog", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432\u043d\u0430\u0447\u0430\u043b\u0435 \u0440\u0430\u043d\u0434\u043e\u043c\u043d\u044b\u0439 \u0442\u0435\u043a\u0441\u0442", None))
         self.checkBox_2.setText(QCoreApplication.translate("Dialog", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0443", None))
         self.pushButton.setText(QCoreApplication.translate("Dialog", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432\u0440\u0435\u043c\u044f", None))

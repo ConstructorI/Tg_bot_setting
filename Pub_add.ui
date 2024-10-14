@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Публикация</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/icons/icon2.ico</normaloff>:/icons/icon2.ico</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
     background-color: #1E1E1E; /* Основной фон */
@@ -231,7 +235,7 @@ QTimeEdit:focus {
       <widget class="QPushButton" name="pushButton">
        <property name="maximumSize">
         <size>
-         <width>120</width>
+         <width>16777215</width>
          <height>22</height>
         </size>
        </property>
@@ -244,7 +248,7 @@ QTimeEdit:focus {
       <widget class="QPushButton" name="pushButton_2">
        <property name="maximumSize">
         <size>
-         <width>120</width>
+         <width>16777215</width>
          <height>22</height>
         </size>
        </property>
@@ -332,6 +336,8 @@ QTimeEdit:focus {
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -14,6 +14,7 @@ from gradio_client import Client
 from base_data import Data
 from MainWindow import Ui_MainWindow
 from Pub_add import Ui_Pub_add
+from Pub_edit import Ui_Pub_edit
 from Token_input import Ui_Token_input
 from do_del import Ui_Del
 
@@ -34,7 +35,7 @@ class MainWindow(QMainWindow):
 
     def tray_act(self):
         self.tray_icon = QSystemTrayIcon(self)
-        self.tray_icon.setIcon(QIcon("flower.ico"))
+        self.tray_icon.setIcon(QIcon("_internal/icon.ico"))
 
         tray_menu = QMenu()
         restore_action = QAction("Восстановить", self)
@@ -55,7 +56,7 @@ class MainWindow(QMainWindow):
         self.ui_main.pushButton.clicked.connect(lambda: self.open_Token_input())
         self.ui_main.pushButton_3.clicked.connect(lambda: self.open_Pub_add())
         self.ui_main.pushButton_2.clicked.connect(lambda: self.quit())
-        self.ui_main.tableView.doubleClicked.connect(lambda: self.open_del_from_base())
+        self.ui_main.tableView.doubleClicked.connect(lambda: self.open_edit())
 
     '''
     Таймер и алгоритм проверки времени
@@ -144,7 +145,92 @@ class MainWindow(QMainWindow):
         self.Pub_add.close()
         self.conn_base()
 
-    def open_del_from_base(self):
+    def quit(self):
+        self.token = ""
+        self.conn_base()
+        self.ui_main.label_2.setText("Название бота")
+        self.ui_main.label_3.setText("Пикча бота")
+        self.ui_main.pushButton.setHidden(False)
+        self.ui_main.pushButton_2.setHidden(True)
+
+    '''
+    Окно редактирования
+    '''
+    def open_edit(self):
+        self.Pub_edit = QtWidgets.QDialog()
+        self.ui_Pub_edit = Ui_Pub_edit()
+        self.ui_Pub_edit.setupUi(self.Pub_edit)
+        id = self.ui_main.tableView.selectedIndexes()[0].row()
+        self.ui_Pub_edit.lineEdit.setText(str(self.model.record(id).value("Название\xa0канала")))
+        self.ui_Pub_edit.lineEdit_2.setText(str(self.model.record(id).value("ID\xa0канала")))
+        self.ui_Pub_edit.plainTextEdit.setPlainText(str(self.model.record(id).value("Промпт\xa0текста")))
+        self.ui_Pub_edit.checkBox_2.setChecked(self.model.record(id).value("Пикча"))
+        self.ui_Pub_edit.checkBox.setChecked(self.model.record(id).value("Рандом\xa0текст"))
+        times = self.model.record(id).value("Время").split(" ")
+        self.time_edits = []
+        for i in times:
+            time_edit = QTimeEdit()
+            time_edit.setButtonSymbols(QAbstractSpinBox.NoButtons)
+            time_i = QTime.fromString(i, 'h:mm')
+            time_edit.setTime(time_i)
+            self.time_edits.append(time_edit)
+            self.ui_Pub_edit.verticalLayout_5.addWidget(time_edit)
+        self.Pub_edit.show()
+
+        self.ui_Pub_edit.pushButton.clicked.connect(lambda: self.add_timeedit_to_edit())
+        self.ui_Pub_edit.pushButton_2.clicked.connect(lambda: self.remove_timeedit_from_edit())
+        self.ui_Pub_edit.pushButton_3.clicked.connect(lambda: self.edit_base())
+        self.ui_Pub_edit.pushButton_4.clicked.connect(lambda: self.open_del())
+
+    def add_timeedit_to_edit(self):
+        time_edit = QTimeEdit()
+        time_edit.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.ui_Pub_edit.verticalLayout_5.addWidget(time_edit)
+        print(self.time_edits)
+        self.time_edits.append(time_edit)
+
+    def remove_timeedit_from_edit(self):
+        if self.time_edits:
+            time_edit = self.time_edits[-1]
+            time_edit.deleteLater()
+            time_edit.setParent(None)
+            self.time_edits.remove(time_edit)
+
+    def close_Pub_edit(self):
+        self.Pub_edit.close()
+        pass
+
+    def edit_base(self):
+        id = self.ui_main.tableView.selectedIndexes()[0].row()
+        base_id = str(self.model.record(id).value("ID"))
+        ch_name = self.ui_Pub_edit.lineEdit.text()
+        ch_ID = self.ui_Pub_edit.lineEdit_2.text()
+        pt_text = self.ui_Pub_edit.plainTextEdit.toPlainText()
+        if self.ui_Pub_edit.checkBox_2.isChecked():
+            pt_pic = True
+        else:
+            pt_pic = False
+        token = self.token
+        if self.ui_Pub_edit.checkBox.isChecked():
+            rand = True
+        else:
+            rand = False
+        time = ""
+        try:
+            if self.time_edits:
+                for time_i in self.time_edits:
+                    time += time_i.text() + " "
+        except RuntimeError:
+            pass
+        self.base.update_query(ch_ID, ch_name, pt_text, pt_pic, rand, time, token, base_id)
+        self.Pub_edit.close()
+        self.conn_base()
+
+    '''
+    Удаление
+    '''
+
+    def open_del(self):
         self.DoDel = QtWidgets.QDialog()
         self.ui_do_del = Ui_Del()
         self.ui_do_del.setupUi(self.DoDel)
@@ -157,15 +243,8 @@ class MainWindow(QMainWindow):
         base_id = str(self.model.record(id).value("ID"))
         self.base.delete_query(base_id)
         self.conn_base()
+        self.Pub_edit.close()
         self.DoDel.close()
-
-    def quit(self):
-        self.token = ""
-        self.conn_base()
-        self.ui_main.label_2.setText("Название бота")
-        self.ui_main.label_3.setText("Пикча бота")
-        self.ui_main.pushButton.setHidden(False)
-        self.ui_main.pushButton_2.setHidden(True)
 
     '''
     Окно добавления токена

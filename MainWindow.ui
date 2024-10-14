@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Tg bot settings</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/icons/icon.ico</normaloff>:/icons/icon.ico</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
     background-color: #1E1E1E; /* Основной фон */
@@ -209,6 +213,8 @@ QTimeEdit:focus {
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

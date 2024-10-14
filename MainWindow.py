@@ -19,12 +19,16 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QGridLayout, QHB
     QHeaderView, QLabel, QMainWindow, QPushButton,
     QSizePolicy, QSpacerItem, QTableView, QVBoxLayout,
     QWidget)
+import res_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(737, 228)
+        icon = QIcon()
+        icon.addFile(u":/icons/icon.ico", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"QWidget {\n"
 "    background-color: #1E1E1E; /* \u041e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u0444\u043e\u043d */\n"
 "    color: #FFFFFF; /* \u0422\u0435\u043a\u0441\u0442 */\n"
