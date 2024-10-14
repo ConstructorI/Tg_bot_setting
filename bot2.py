@@ -9,7 +9,7 @@ def make_pairs(corp):
 
 def gen():
 
-    text = open('рандомайзер.txt', encoding='utf-8').read()
+    text = open('_internal/рандомайзер.txt', encoding='utf-8').read()
 
     corpus = text.split()
     pairs = make_pairs(corpus)
